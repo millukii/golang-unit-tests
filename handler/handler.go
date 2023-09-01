@@ -2,26 +2,24 @@ package handler
 
 import (
 	"fmt"
+	"go-tests/models"
 	"net/http"
 	"strings"
 
 	"github.com/uptrace/bunrouter"
+
 )
 
 type Controlador struct {
 }
 
-type Category struct{
-	Id int
-	Name string
-}
 
 
 
 func (h Controlador)GetById(w http.ResponseWriter, req bunrouter.Request) error {
  // req embeds *http.Request and has all the same fields and methods
     fmt.Println(req.Method, req.Route(), req.Params().Map())
-var	categories = []Category{Category{
+var	categories = []models.Category{models.Category{
 		Id: 1,
 		Name: "News",
 }}

@@ -16,7 +16,7 @@ ejemplos de test unitarios en go usando bun router
            go mod init "nombre del modulo"
 
 2.  Para crear nuestro go.sum(archivo que registrará los requerimientos y dependencias) go mod tidy
-3.  Crear arhivo main.go
+3.  Crear archivo main.go
 
 ```go
    package main
@@ -245,6 +245,68 @@ router.GET("/api/categories/category/items/:id", c.GetById)
 		require.NoError(t, err)
 
 	})
+}
+```
+
+20. Agregamos service.go con la estructura base
+
+```go
+package service
+
+type CountriesCategory struct {
+	Country  string
+	Category int
+	Enabled  bool
+}
+
+type Service interface {
+	GetById(id int, country string) (string, error)
+}
+
+type svc struct {
+}
+
+func NewService() Service {
+
+	return &svc{}
+}
+
+func (s svc) GetById(id int, country string) (string, error) {
+
+	return "", nil
+}
+```
+
+21. Instalar mockery go install github.com/vektra/mockery/v2@v2.33.0
+
+22. Crear carpeta models y archivo category.go
+
+23. Crear carpeta repository y archivo category.go
+24. Vamos a crear una capa de repositorio donde tengamos una separacion de logica de operaciones sobre un repositorio de datos estándar sql a la implementación concreta del Sistema Gestor de Base de dato.
+
+```go
+package repository
+
+import (
+	"database/sql"
+	"go-tests/models"
+)
+
+type CategoryRepo interface {
+	GetById(id int, country string) (models.CountriesCategory, error)
+}
+
+type catRepo struct{
+	db *sql.DB
+}
+func NewCategoryRepo(db *sql.DB) CategoryRepo{
+	return &catRepo{}
+}
+
+func (c catRepo) 	GetById(id int, country string) (models.CountriesCategory, error){
+
+	return models.CountriesCategory{}, nil
+
 }
 ```
 
