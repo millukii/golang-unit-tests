@@ -1,6 +1,6 @@
 package models
 
-type CountriesCategory struct {
+type CategoryCountry struct {
 	Id       int
 	Country  string
 	Category int
