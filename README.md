@@ -310,4 +310,12 @@ func (c catRepo) 	GetById(id int, country string) (models.CountriesCategory, err
 }
 ```
 
+25. Hacemos un mock manual para comparar con mockery
+
+26. Descargamos github.com/stretchr/testify/mock
+27. Descargamos mockery
+28. Ejecutamos
+
+mockery --name=CategoryRepo
+mockery --name=CategoryCountryRepo 29.
 [doc-bun-router]: https://bunrouter.uptrace.dev/guide/golang-router.html#creating-go-router
